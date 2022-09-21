@@ -1,2 +1,2 @@
-# koshtech
-koshtec official webpage
+# koshtony.github.io
+koshtech official website
