@@ -4,6 +4,7 @@ import (
 	"html/template"
 	"log"
 	"net/http"
+	"os"
 )
 
 func mainPage(w http.ResponseWriter, req *http.Request) {
@@ -12,8 +13,9 @@ func mainPage(w http.ResponseWriter, req *http.Request) {
 }
 
 func main() {
+	port := os.Getenv("PORT")
 	statics := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", statics))
 	http.HandleFunc("/", mainPage)
-	log.Fatal(http.ListenAndServe(":200", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
