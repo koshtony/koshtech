@@ -6,6 +6,7 @@ import (
 	"log"
 	"net/http"
 	"net/smtp"
+	"os"
 )
 
 // main page route
@@ -41,9 +42,9 @@ func sendMail(name string, email string, sub string, body string) {
 }
 
 func main() {
-	//port := os.Getenv("PORT")
+	port := os.Getenv("PORT")
 	statics := http.FileServer(http.Dir("assets"))
 	http.Handle("/assets/", http.StripPrefix("/assets/", statics))
 	http.HandleFunc("/", mainPage)
-	log.Fatal(http.ListenAndServe(":200", nil))
+	log.Fatal(http.ListenAndServe(":"+port, nil))
 }
