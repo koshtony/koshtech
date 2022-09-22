@@ -24,7 +24,7 @@ func mainPage(w http.ResponseWriter, req *http.Request) {
 
 }
 
-// send
+// fucntion to send email
 func sendMail(name string, email string, sub string, body string) {
 	from := "tonykosh4@gmail.com"
 	password := "swvkfhtazuofijpp"
